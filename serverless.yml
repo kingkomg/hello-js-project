@@ -8,13 +8,23 @@ provider:
   lambdaHashingVersion: 20201221
 
 functions:
-  hello:
-    handler: handler.hello
+  helloJs:
+    handler: handlerJs.hello
     events:
       - http:
           method: get
-          path: hello
+          path: helloJs
     environment:
       NODE_PATH: "./:/opt/node_modules"
     layers:
       - arn:aws:lambda:eu-west-1:187917125870:layer:HelloJsLayer:1
+  helloTs:
+    handler: handlerTs.hello
+    events:
+      - http:
+          method: get
+          path: helloTs
+    environment:
+      NODE_PATH: "./:/opt/node_modules"
+    layers:
+      - arn:aws:lambda:eu-west-1:187917125870:layer:HelloTsLayer:3
